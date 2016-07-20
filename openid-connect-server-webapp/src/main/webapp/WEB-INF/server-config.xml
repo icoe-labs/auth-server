@@ -35,8 +35,8 @@
 	</bean>
 
 	<bean id="configBean" class="org.mitre.openid.connect.config.ConfigurationPropertiesBean">
-		<!-- <property name="issuer" value="${BASE_URL:http://localhost:8080/openid-connect-server-webapp/}" /> -->
-		<property name="issuer" value="${BASE_URL:http://smart-authz-server.cloudhub.io/openid-connect-server-webapp/}" />
+		<property name="issuer" value="${BASE_URL:http://localhost:8080/openid-connect-server-webapp/}" />
+		<!--<property name="issuer" value="${BASE_URL:http://smart-authz-server.cloudhub.io/openid-connect-server-webapp/}" />-->
 	    	<!-- This property sets the root URL of the server, known as the issuer -->
  		<property name="logoImageUrl" value="resources/images/openid_connect_small.png" />
  		

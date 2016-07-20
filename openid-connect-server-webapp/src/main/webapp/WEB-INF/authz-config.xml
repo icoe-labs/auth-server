@@ -52,10 +52,14 @@
 
 	<bean id="smartLaunchContextResolver" class="org.smartplatforms.oauth2.SmartLaunchContextResolver">
 		<property name="fhirEndpoint"
-				  value="${CONTEXT_FHIR_ENDPOINT:http://icoe-smart-fhir-jelastic-server.cloudhub.io}" />
-			<!--value="${CONTEXT_FHIR_ENDPOINT:http://node10150-icoe-fhir-grails-server.dal.jelastic.vps-host.net/fhir}" />-->
+				  value="${CONTEXT_FHIR_ENDPOINT:http://localhost:9080}" />
 		<property name="resolveEndpoint"
-			value="${CONTEXT_RESOLVE_ENDPOINT:http://icoe-smart-apps.cloudhub.io/}" />
+				  value="${CONTEXT_RESOLVE_ENDPOINT:http://localhost:8000}" />
+		<!--<property name="fhirEndpoint"
+				  value="${CONTEXT_FHIR_ENDPOINT:http://icoe-smart-fhir-jelastic-server.cloudhub.io}" />
+			&lt;!&ndash;value="${CONTEXT_FHIR_ENDPOINT:http://node10150-icoe-fhir-grails-server.dal.jelastic.vps-host.net/fhir}" />&ndash;&gt;
+		<property name="resolveEndpoint"
+			value="${CONTEXT_RESOLVE_ENDPOINT:http://icoe-smart-apps.cloudhub.io/}" />-->
 
 		<property name="username" value="${CONTEXT_USERNAME:client}" />
 		<property name="password" value="${CONTEXT_PASSWORD:secret}" />
