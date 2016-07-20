@@ -12,18 +12,21 @@ START TRANSACTION;
 
 INSERT INTO users_TEMP (username, password, enabled) VALUES
   ('admin','password',true),
-  ('user','password',true);
+  ('user','password',true),
+  ('aaron','password',true);
 
 
 INSERT INTO authorities_TEMP (username, authority) VALUES
   ('admin','ROLE_ADMIN'),
   ('admin','ROLE_USER'),
-  ('user','ROLE_USER');
+  ('user','ROLE_USER'),
+  ('aaron','ROLE_USER');
     
 -- By default, the username column here has to match the username column in the users table, above
-INSERT INTO user_info_TEMP (sub, preferred_username, name, email, email_verified) VALUES
-  ('90342.ASDFJWFA','admin','Demo Admin','admin@example.com', true),
-  ('01921.FLANRJQW','user','Demo User','user@example.com', true);
+INSERT INTO user_info_TEMP (sub, preferred_username, name, email, email_verified, profile) VALUES
+  ('90342.ASDFJWFA','admin','Demo Admin','admin@example.com', true,''),
+  ('01921.FLANRJQW','user','Demo User','user@example.com', true,''),
+  ('01922.ASKLNCSK','aaron','Aaron Alexis','user@example.com', true,'http://icoe-smart-fhir-jelastic-server.cloudhub.io/Patient/9995679');
 
  
 --
@@ -43,10 +46,10 @@ MERGE INTO authorities
     INSERT (username,authority) values (vals.username, vals.authority);
 
 MERGE INTO user_info 
-  USING (SELECT sub, preferred_username, name, email, email_verified FROM user_info_TEMP) AS vals(sub, preferred_username, name, email, email_verified)
+  USING (SELECT sub, preferred_username, name, email, email_verified, profile FROM user_info_TEMP) AS vals(sub, preferred_username, name, email, email_verified, profile)
   ON vals.preferred_username = user_info.preferred_username
   WHEN NOT MATCHED THEN 
-    INSERT (sub, preferred_username, name, email, email_verified) VALUES (vals.sub, vals.preferred_username, vals.name, vals.email, vals.email_verified);
+    INSERT (sub, preferred_username, name, email, email_verified, profile) VALUES (vals.sub, vals.preferred_username, vals.name, vals.email, vals.email_verified, vals.profile);
 
     
 -- 
